@@ -5,8 +5,9 @@ create table tbl_produto(
 codigo int primary key auto_increment,
 produto varchar(200),
 preco decimal(6,2),
+Qtd bigint,
 cod_cad int,
- foreign key (cod_cad) references tbl_categoria(cd_cad)
+foreign key (cod_cad) references tbl_categoria(cd_cad)
 );
 
 create table tbl_categoria(
@@ -14,16 +15,40 @@ cd_cad int primary key auto_increment,
 categoria varchar(200)
 );
 
-insert into tbl_produto(produto, preco, cod_cad)
-				 values('Camisa Brasil', 280.00, 1),
-                       ('Corneta', 56.00, 2),
-                       ('Chapeu Brasil', 68.00, 2),
-                       ('Calça Agasalho', 220.00, 1);
+create table tbl_compra(
+NumeroCompra bigint primary key auto_increment,
+Qtd bigint,
+ValorTotal decimal(8,2),
+ValorUnitario decimal(6,2),
+codigo int,
+foreign key (codigo) references tbl_produto(codigo)
+);
+
+insert into tbl_produto(produto, preco, Qtd, cod_cad)
+				 values('Camisa Brasil', 280.00, 10, 1),
+                       ('Corneta', 56.00, 10, 2),
+                       ('Chapeu Brasil', 68.00, 20, 2),
+                       ('Calça Agasalho', 220.00, 15, 1);
                        
 insert into tbl_categoria(categoria)
                    values('Vestimenta'),
                          ('Acessorio');
-                         
+
+delimiter $$
+create procedure spInsertComp(vNomeProd varchar(200), vQtd bigint)
+begin
+	set @codigo = (select codigo from tbl_produto where produto = vNomeProd);
+	set @ValorUnitario = (select preco from tbl_produto where produto = vNomeProd);
+	insert into tbl_compra(NumeroCompra, Qtd, ValorTotal, ValorUnitario, codigo)
+				    values(default, vQtd, vQtd * @ValorUnitario, @ValorUnitario, (select codigo from tbl_produto where produto = vNomeProd));
+	update tbl_produto set Qtd = Qtd - vQtd where codigo = @codigo;
+end $$
+
+call spInsertComp('Camisa Brasil', 2);
+call spInsertComp('Corneta', 5);
+select * from tbl_produto;
+select * from tbl_compra;
+
 create view vw_prod as
 select
 	tbl_produto.codigo,
@@ -37,7 +62,6 @@ from tbl_produto inner join tbl_categoria on tbl_produto.cod_cad = tbl_categoria
 select * from vw_prod;
 
 select * from tbl_categoria;
-select * from tbl_produto;
 
 create table tbl_usuario(
 Codigo bigint primary key auto_increment,
