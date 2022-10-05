@@ -23,7 +23,7 @@
                 <div><h5><b>Produto: <?php echo $exibir['produto']; ?></b></h5></div>
                 <div><h5>Preço: R$ <?php echo number_format($exibir['preco'],2, ',','.'); ?></h5></div>
                 <div class="text" style="margin-top:5px; margin-bottom:5px;">
-                <a class="btn btn-xl btn-block btn-success" href="formComprar.php" role="button">Comprar</a>
+                <a class="btn btn-xl btn-block btn-success" href="formComprar.php?cd=<?php echo $exibir['codigo'];?>" role="button">Comprar</a>
                 </div>
             </div>
         <?php } ?>
