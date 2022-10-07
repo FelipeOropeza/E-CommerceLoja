@@ -19,10 +19,11 @@
             <h4 class="text-center">Menu Administrativo</h4>
             <br>
             <a class="btn btn-primary" href="exibeRig.php" role="button">Exibe registro</a>
-            <a class="btn btn-success" href="exibeCom.php" role="button">Exibe compras</a>
-            <a class="btn btn-danger" href="formProd.php" role="button">Cadastro de produto</a>
-            <a class="btn btn-warning" href="formCat.php" role="button">Cadastro de categoria</a>
-            <a class="btn btn-info" href="exibeUsu.php" role="button">Lista de usuários</a>
+            <a class="btn btn-primary" href="exibeCom.php" role="button">Exibe compras</a>
+            <a class="btn btn-primary" href="formProd.php" role="button">Cadastro de produto</a>
+            <a class="btn btn-primary" href="formCat.php" role="button">Cadastro de categoria</a>
+            <a class="btn btn-primary" href="exibeUsu.php" role="button">Lista de usuários</a>
+            <a class="btn btn-primary" href="exibehist.php" role="button">Histórico de registros</a>
         </div>
     </form>
 </div>

@@ -18,9 +18,9 @@
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr>
-            <td>Codigo</td>
-            <td>Nome</td>
-            <td>Email</td>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>Email</th>
         </tr>
         <?php while($exibir=$consulta->fetch(PDO::FETCH_ASSOC)){?>
         <tr>

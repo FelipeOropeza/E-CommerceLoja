@@ -24,13 +24,13 @@
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr>
-            <td>Codigo</td>
-            <td>Produto</td>
-            <td>Preço</td>
-            <td>Quantidade</td>
-            <td>Categoria</td>
-            <td>Alterar</td>
-            <td>Excluir</td>
+            <th>Codigo</th>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Categoria</th>
+            <th>Alterar</th>
+            <th>Excluir</th>
         </tr>
         <?php while($exibir=$consulta->fetch(PDO::FETCH_ASSOC)){?>
         <tr>
