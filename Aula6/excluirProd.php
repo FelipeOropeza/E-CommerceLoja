@@ -3,6 +3,7 @@
 
     $cd_prod = $_GET['cd'];
 
-    $consulta = $cn->query("delete from tbl_produto where codigo = '$cd_prod'");
+    $consultaComp = $cn->query("delete from tbl_compra where codigo = '$cd_prod'");
+    $consultaProd = $cn->query("delete from tbl_produto where codigo = '$cd_prod'");
     header('location:exibeRig.php');
 ?>

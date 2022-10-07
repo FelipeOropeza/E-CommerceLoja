@@ -17,30 +17,30 @@
         session_start();
         include 'conexao.php';
         include 'nav.php';
-        $consulta = $cn->query("select * from vw_prod");
+        $consulta_usuario = $cn->query("select nome from tbl_usuario where codigo = '$_SESSION[ID]'");
+        $exibe_usuario = $consulta_usuario->fetch(PDO::FETCH_ASSOC);
+        $consulta = $cn->query("select * from vw_comp");
      ?>
 </head>
 <body>
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr>
-            <td>Codigo</td>
-            <td>Produto</td>
-            <td>Preço</td>
+            <td>Numero da Comprar</td>
             <td>Quantidade</td>
-            <td>Categoria</td>
-            <td>Alterar</td>
-            <td>Excluir</td>
+            <td>Valor Total</td>
+            <td>Valor Unitario</td>
+            <td>Codigo</td>
+            <td>Usuario</td>
         </tr>
         <?php while($exibir=$consulta->fetch(PDO::FETCH_ASSOC)){?>
         <tr>
-            <td><?php echo $exibir['codigo'].''; ?></td>
-            <td><?php echo $exibir['produto']; ?></td>
-            <td>R$ <?php echo number_format($exibir['preco'],2, ',','.'); ?></td>
-            <td><?php echo $exibir['qtd']; ?></td>
-            <td><?php echo $exibir['categoria']; ?></td>
-            <td><a href="formAlter.php?cd=<?php echo $exibir['codigo'];?>&cat=<?php echo $exibir['cd_cad']?>"><img src="img/alterar.png"></a></td>
-            <td><a href="excluirProd.php?cd=<?php echo $exibir['codigo']; ?>"><img src="img/excluir.png"></a></td>
+            <td><?php echo $exibir['NumeroCompra'].''; ?></td>
+            <td><?php echo $exibir['Qtd']; ?></td>
+            <td>R$ <?php echo number_format($exibir['ValorTotal'],2, ',','.'); ?></td>
+            <td>R$ <?php echo number_format($exibir['ValorUnitario'],2, ',','.'); ?></td>
+            <td><?php echo $exibir['codigoProd']; ?></td>
+            <td><?php echo $exibe_usuario['nome']; ?></td>
         </tr>
         <?php }; ?>
     </table>

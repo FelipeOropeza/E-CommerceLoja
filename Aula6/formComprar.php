@@ -17,23 +17,29 @@
 	$consulta = $cn->query("select * from vw_prod where codigo = '$codProd'");
 	$exibir = $consulta->fetch(PDO::FETCH_ASSOC);
 ?>
-
-<div class="container-fluid">
-
-	<div class="row align-items-start" style="padding-top: 20px; margin-left: 20px;">
-		
-		<div class="col-sm-4 col-sm-offset-1">
-			<div class="col-sm-5"><h4><?php echo $exibir['produto'];?></h4></div>
-		</div>
-		
-		<div class="col-sm-4 col-sm-offset-1">
-			<div class="col-sm-2"><h4><?php echo number_format($exibir['preco'], 2, ',', '.');?></h4></div>
-		</div>
-		
-		<div class="col-sm-4 col-sm-offset-1">
-			<button class="btn btn-lg btn-success">Comprar</button>
-		</div>
-	</div>
+<div class="container ">
+    <form class="form form-control-sm" name="frmCadastroProd" method="post" action="comprarProd.php">
+        <div class="col-sm-3 offset-md-4">
+            <h2>Comprar de produto</h2>
+            <br>
+            <label for="prod" class="form-label">Produto</label>
+            <input type="text" value="<?php echo $exibir['produto'];?>" class="form-control" id="prod" name="prod" readonly>
+        </div>
+        <br>
+        <div class="col-sm-3 offset-md-4">
+            <label for="preco" class="form-label">Preço</label>
+            <input type="text" value="<?php echo number_format($exibir['preco'], 2, ',', '.');?>" class="form-control" id="preco" name="preco" readonly>
+        </div>
+        <br>
+        <div class="col-sm-3 offset-md-4">
+            <label for="preco" class="form-label">Quantidade</label>
+            <input type="number" class="form-control" id="qtd" name="qtd" min="1">
+        </div>
+        <br>
+		<div class="col-sm-3 offset-md-4">
+            <button type="submit" class="btn btn-success">Comprar</button>
+        </div>
+    </form>
 </div>
 </body>
 </html>

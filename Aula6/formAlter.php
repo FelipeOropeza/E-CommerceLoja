@@ -17,12 +17,12 @@
     $cat_codigo = $_GET['cat'];
 
     $consultaCat = $cn->query("select cd_cad, categoria from tbl_categoria where  cd_cad = '$cat_codigo' union select cd_cad, categoria from tbl_categoria");
-    $consultaProd = $cn->query("select * from tbl_produto where codigo = '$cd_codigo'");
+    $consultaProd = $cn->query("select * from vw_prod where codigo = '$cd_codigo'");
     $exibirProd = $consultaProd->fetch(PDO::FETCH_ASSOC);
 
     ?>
 <div class="container ">
-    <form class="form form-control-sm" name="frmCadastroProd" method="post" action="alteraReg.php?cd=<?php echo $cd_codigo ?>">
+    <form class="form form-control-sm" name="frmCadastroProd" method="post" action="alteraReg.php?cd=<?php echo $cd_codigo; ?>">
         <div class="col-sm-3 offset-md-4">
             <h2>Alteração de produto</h2>
             <br>
@@ -33,6 +33,11 @@
         <div class="col-sm-3 offset-md-4">
             <label for="preco" class="form-label">Preço</label>
             <input type="text" value="<?php echo $exibirProd['preco']; ?>" class="form-control" id="txtpreco" name="txtpreco">
+        </div>
+        <br>
+        <div class="col-sm-3 offset-md-4">
+            <label for="preco" class="form-label">Quantidade</label>
+            <input type="number" value="<?php echo $exibirProd['qtd']; ?>" class="form-control" id="qtd" name="qtd" disabled="">
         </div>
         <br>
         <div class="col-sm-3 offset-md-4">

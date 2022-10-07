@@ -29,6 +29,11 @@
         </div>
         <br>
         <div class="col-sm-3 offset-md-4">
+            <label for="preco" class="form-label">Quantidade</label>
+            <input type="number" class="form-control" id="qtd" name="qtd" min="1">
+        </div>
+        <br>
+        <div class="col-sm-3 offset-md-4">
             <label for="cat" class="form-label">Selecione a categoria</label>
             <select id="cat" name="cat" class="form-select">
                 <option disabled>Categorias:</option>
