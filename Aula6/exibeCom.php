@@ -17,8 +17,6 @@
         session_start();
         include 'conexao.php';
         include 'nav.php';
-        $consulta_usuario = $cn->query("select nome from tbl_usuario where codigo = '$_SESSION[ID]'");
-        $exibe_usuario = $consulta_usuario->fetch(PDO::FETCH_ASSOC);
         $consulta = $cn->query("select * from vw_comp");
      ?>
 </head>
@@ -30,7 +28,7 @@
             <td>Quantidade</td>
             <td>Valor Total</td>
             <td>Valor Unitario</td>
-            <td>Codigo</td>
+            <td>Produto</td>
             <td>Usuario</td>
         </tr>
         <?php while($exibir=$consulta->fetch(PDO::FETCH_ASSOC)){?>
@@ -39,8 +37,8 @@
             <td><?php echo $exibir['Qtd']; ?></td>
             <td>R$ <?php echo number_format($exibir['ValorTotal'],2, ',','.'); ?></td>
             <td>R$ <?php echo number_format($exibir['ValorUnitario'],2, ',','.'); ?></td>
-            <td><?php echo $exibir['codigoProd']; ?></td>
-            <td><?php echo $exibe_usuario['nome']; ?></td>
+            <td><?php echo $exibir['produto']; ?></td>
+            <td></td>
         </tr>
         <?php }; ?>
     </table>

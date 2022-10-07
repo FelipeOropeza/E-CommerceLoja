@@ -27,6 +27,6 @@
         </div>
     </form>
 </div>
-<script src="scriptCat.js"></script>
+<script src="scriptCate.js"></script>
 </body>
 </html>
