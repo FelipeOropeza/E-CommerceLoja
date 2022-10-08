@@ -126,4 +126,20 @@ begin
 		 Atualizacao = current_timestamp();
 end$$
 
+delimiter $$
+create trigger tgrDeleteProd before delete on tbl_Produto
+	for each row
+begin
+	insert into tbl_ProdHist
+		 set  		 
+         codigo = old.codigo,
+		 produto = old.produto,
+		 preco = old.preco,
+		 Qtd = old.Qtd,
+         cod_cad = old.cod_cad,
+		 Ocorrencia = "Excluido",
+		 Atualizacao = current_timestamp();
+end$$
+
+delete from tbl_produto where codigo = 5;
 select * from tbl_prodhist;
