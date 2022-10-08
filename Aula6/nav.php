@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Sword art Online</a>
