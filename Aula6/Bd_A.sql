@@ -141,5 +141,4 @@ begin
 		 Atualizacao = current_timestamp();
 end$$
 
-delete from tbl_produto where codigo = 5;
 select * from tbl_prodhist;
