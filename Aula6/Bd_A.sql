@@ -60,6 +60,19 @@ select
     tbl_categoria.categoria
 from tbl_produto inner join tbl_categoria on tbl_produto.cod_cad = tbl_categoria.cd_cad;
 
+create view vw_prodhist as
+select
+	tbl_prodHist.codigo,
+    tbl_prodHist.produto,
+    tbl_prodHist.preco,
+    tbl_prodHist.qtd,
+    tbl_prodHist.cod_cad,
+    tbl_prodHist.ocorrencia,
+    tbl_prodHist.atualizacao,
+	tbl_categoria.cd_cad,
+    tbl_categoria.categoria
+from tbl_prodHist inner join tbl_categoria on tbl_prodHist.cod_cad = tbl_categoria.cd_cad;
+
 create view vw_comp as
 select
 	tbl_compra.NumeroCompra,
@@ -102,11 +115,11 @@ create trigger trgInsertProd after insert on tbl_Produto
 	for each row
 begin
 	insert into tbl_ProdHist set
-		 codido = new.codigo,
+		 codigo = new.codigo,
 		 produto = new.produto,
 		 preco = new.preco,
 		 Qtd = new.Qtd,
-         cod_cad = new.cod.cad,
+         cod_cad = new.cod_cad,
 		 Ocorrencia = "Novo",
 		 Atualizacao = current_timestamp();
 end $$
@@ -115,13 +128,13 @@ delimiter $$
 create trigger tgrUpdateProd after update on tbl_Produto
 	for each row
 begin
-	insert into tbProdHist
+	insert into tbl_ProdHist
 		set  		 
-         codido = new.codigo,
+         codigo = new.codigo,
 		 produto = new.produto,
 		 preco = new.preco,
 		 Qtd = new.Qtd,
-         cod_cad = new.cod.cad,
+         cod_cad = new.cod_cad,
 		 Ocorrencia = "Atualizado",
 		 Atualizacao = current_timestamp();
 end$$

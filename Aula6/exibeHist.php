@@ -32,8 +32,8 @@
             <td>R$ <?php echo number_format($exibir['preco'],2, ',','.'); ?></td>
             <td><?php echo $exibir['qtd']; ?></td>
             <td><?php echo $exibir['categoria']; ?></td>
-            <td><?php echo $exibir['Ocorrencia']; ?></td>
-            <td><?php echo $exibir['Atualizacao']; ?></td>
+            <td><?php echo $exibir['ocorrencia']; ?></td>
+            <td><?php echo $exibir['atualizacao']; ?></td>
         </tr>
         <?php }; ?>
     </table>
