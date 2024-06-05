@@ -1,2 +1,1 @@
 # ProjetoLoja
-Projeto em desenvolvimento
